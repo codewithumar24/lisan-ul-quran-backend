@@ -4,6 +4,14 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Contracts\Repositories\PermissionRepositoryContract;
+use Modules\Core\Contracts\Repositories\RoleRepositoryContract;
+use Modules\Core\Contracts\Services\PermissionServiceContract;
+use Modules\Core\Contracts\Services\RoleServiceContract;
+use Modules\Core\Repositories\PermissionRepository;
+use Modules\Core\Repositories\RoleRepository;
+use Modules\Core\Services\PermissionService;
+use Modules\Core\Services\RoleService;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +44,14 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        // Bind repositories
+        $this->app->bind(RoleRepositoryContract::class, RoleRepository::class);
+        $this->app->bind(PermissionRepositoryContract::class, PermissionRepository::class);
+
+        // Bind services
+        $this->app->bind(RoleServiceContract::class, RoleService::class);
+        $this->app->bind(PermissionServiceContract::class, PermissionService::class);
     }
 
     /**
