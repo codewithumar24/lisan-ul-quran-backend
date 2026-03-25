@@ -35,7 +35,7 @@ readonly class UserService implements UserServiceContract
     public function register(RegisterDTO $dto): User
     {
         // Get student role
-        $studentRole = $this->roleRepository->findByName('Student');
+        $studentRole = $this->roleRepository->findById($id);
 
         $user = $this->userRepository->create(
             $dto->getFirstName(),
