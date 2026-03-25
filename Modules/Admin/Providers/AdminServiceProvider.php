@@ -4,6 +4,18 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Admin\Contracts\Repositories\ArabicLetterRepositoryContract;
+use Modules\Admin\Contracts\Repositories\MakhrajCategoryRepositoryContract;
+use Modules\Admin\Contracts\Repositories\TajweedRuleRepositoryContract;
+use Modules\Admin\Contracts\Services\ArabicLetterContract;
+use Modules\Admin\Contracts\Services\MakhrajCategoryContract;
+use Modules\Admin\Contracts\Services\TajweedRuleContract;
+use Modules\Admin\Repositories\ArabicLetterRepository;
+use Modules\Admin\Repositories\MakhrajCategoryRepository;
+use Modules\Admin\Repositories\TajweedRuleRepository;
+use Modules\Admin\Services\ArabicLetterService;
+use Modules\Admin\Services\MakhrajCategoryService;
+use Modules\Admin\Services\TajweedRuleService;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -40,6 +52,13 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->app->bind(ArabicLetterRepositoryContract::class, ArabicLetterRepository::class);
         $this->app->bind(ArabicLetterContract::class, ArabicLetterService::class);
+
+        // Add to register method:
+        $this->app->bind(MakhrajCategoryRepositoryContract::class, MakhrajCategoryRepository::class);
+        $this->app->bind(MakhrajCategoryContract::class, MakhrajCategoryService::class);
+
+        $this->app->bind(TajweedRuleRepositoryContract::class, TajweedRuleRepository::class);
+        $this->app->bind(TajweedRuleContract::class, TajweedRuleService::class);
     }
 
     /**

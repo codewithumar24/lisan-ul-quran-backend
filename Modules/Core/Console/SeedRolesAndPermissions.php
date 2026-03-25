@@ -15,7 +15,6 @@ class SeedRolesAndPermissions extends Command
     {
         $this->info('Seeding roles and permissions...');
 
-        // Define permissions
         $permissions = [
             // User permissions
             ['name' => 'View Users', 'group' => 'User'],
@@ -23,19 +22,16 @@ class SeedRolesAndPermissions extends Command
             ['name' => 'Update Users', 'group' => 'User'],
             ['name' => 'Delete Users', 'group' => 'User'],
 
-            // Role permissions
             ['name' => 'View Roles', 'group' => 'Role'],
             ['name' => 'Create Roles', 'group' => 'Role'],
             ['name' => 'Update Roles', 'group' => 'Role'],
             ['name' => 'Delete Roles', 'group' => 'Role'],
 
-            // Permission permissions
             ['name' => 'View Permissions', 'group' => 'Permission'],
             ['name' => 'Create Permissions', 'group' => 'Permission'],
             ['name' => 'Update Permissions', 'group' => 'Permission'],
             ['name' => 'Delete Permissions', 'group' => 'Permission'],
 
-            // Class permissions (from your example)
             ['name' => 'Get Classes', 'group' => 'Class'],
             ['name' => 'Create Class', 'group' => 'Class'],
             ['name' => 'Update Class', 'group' => 'Class'],
@@ -47,9 +43,17 @@ class SeedRolesAndPermissions extends Command
             ['name' => 'Create Arabic Letters', 'group' => 'Arabic Letters'],
             ['name' => 'Update Arabic Letters', 'group' => 'Arabic Letters'],
             ['name' => 'Delete Arabic Letters', 'group' => 'Arabic Letters'],
+            ['name' => 'View Makhraj Categories', 'group' => 'Makhraj Categories'],
+            ['name' => 'Create Makhraj Categories', 'group' => 'Makhraj Categories'],
+            ['name' => 'Update Makhraj Categories', 'group' => 'Makhraj Categories'],
+            ['name' => 'Delete Makhraj Categories', 'group' => 'Makhraj Categories'],
+
+            ['name' => 'View Tajweed Rules', 'group' => 'Tajweed Rules'],
+            ['name' => 'Create Tajweed Rules', 'group' => 'Tajweed Rules'],
+            ['name' => 'Update Tajweed Rules', 'group' => 'Tajweed Rules'],
+            ['name' => 'Delete Tajweed Rules', 'group' => 'Tajweed Rules']
         ];
 
-        // Create permissions
         foreach ($permissions as $perm) {
             Permission::firstOrCreate(
                 ['name' => $perm['name']],
@@ -60,7 +64,6 @@ class SeedRolesAndPermissions extends Command
             );
         }
 
-        // Create roles
         $adminRole = Role::firstOrCreate(
             ['name' => 'Admin'],
             ['slug' => 'admin', 'description' => 'Administrator with full access']
@@ -76,10 +79,8 @@ class SeedRolesAndPermissions extends Command
             ['slug' => 'student', 'description' => 'Student role with basic access']
         );
 
-        // Assign all permissions to admin
         $adminRole->permissions()->sync(Permission::all());
 
-        // Assign specific permissions to teacher
         $teacherPermissions = Permission::whereIn('group', ['Class'])->pluck('id');
         $teacherRole->permissions()->sync($teacherPermissions);
 
