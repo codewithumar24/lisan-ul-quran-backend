@@ -51,7 +51,30 @@ class SeedRolesAndPermissions extends Command
             ['name' => 'View Tajweed Rules', 'group' => 'Tajweed Rules'],
             ['name' => 'Create Tajweed Rules', 'group' => 'Tajweed Rules'],
             ['name' => 'Update Tajweed Rules', 'group' => 'Tajweed Rules'],
-            ['name' => 'Delete Tajweed Rules', 'group' => 'Tajweed Rules']
+            ['name' => 'Delete Tajweed Rules', 'group' => 'Tajweed Rules'],
+            ['name' => 'View Lessons', 'group' => 'Lessons'],
+            ['name' => 'Create Lessons', 'group' => 'Lessons'],
+            ['name' => 'Update Lessons', 'group' => 'Lessons'],
+            ['name' => 'Delete Lessons', 'group' => 'Lessons'],
+            ['name' => 'Publish Lessons', 'group' => 'Lessons'],
+            // Practice Exercises
+            ['name' => 'View Practice Exercises', 'group' => 'Practice Exercises'],
+            ['name' => 'Create Practice Exercises', 'group' => 'Practice Exercises'],
+            ['name' => 'Update Practice Exercises', 'group' => 'Practice Exercises'],
+            ['name' => 'Delete Practice Exercises', 'group' => 'Practice Exercises'],
+
+            // Quizzes
+            ['name' => 'View Quizzes', 'group' => 'Quizzes'],
+            ['name' => 'Create Quizzes', 'group' => 'Quizzes'],
+            ['name' => 'Update Quizzes', 'group' => 'Quizzes'],
+            ['name' => 'Delete Quizzes', 'group' => 'Quizzes'],
+            ['name' => 'Publish Quizzes', 'group' => 'Quizzes'],
+
+            // Quiz Questions
+            ['name' => 'View Quiz Questions', 'group' => 'Quiz Questions'],
+            ['name' => 'Create Quiz Questions', 'group' => 'Quiz Questions'],
+            ['name' => 'Update Quiz Questions', 'group' => 'Quiz Questions'],
+            ['name' => 'Delete Quiz Questions', 'group' => 'Quiz Questions'],
         ];
 
         foreach ($permissions as $perm) {

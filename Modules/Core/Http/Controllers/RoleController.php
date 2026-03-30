@@ -5,7 +5,7 @@ namespace Modules\Core\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Modules\Core\Contracts\Services\RoleServiceContract;
-use Modules\Core\Http\Requests\Role\RoleRequest;
+use Modules\Core\Http\Requests\RoleRequest;
 use Modules\Core\Transformers\RoleTransformer;
 
 class RoleController extends Controller

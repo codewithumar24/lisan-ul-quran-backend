@@ -1,8 +1,10 @@
 <?php
 
+use App\Helpers\ApiResponse;
+
 if (!function_exists('apiResponse')) {
-    function apiResponse()
+    function apiResponse(): ApiResponse
     {
-        return app()->make('apiResponse');
+        return new ApiResponse();
     }
 }

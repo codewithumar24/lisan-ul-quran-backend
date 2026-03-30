@@ -5,16 +5,32 @@ namespace Modules\Admin\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Admin\Contracts\Repositories\ArabicLetterRepositoryContract;
+use Modules\Admin\Contracts\Repositories\LessonRepositoryContract;
 use Modules\Admin\Contracts\Repositories\MakhrajCategoryRepositoryContract;
+use Modules\Admin\Contracts\Repositories\PracticeExerciseRepositoryContract;
+use Modules\Admin\Contracts\Repositories\QuizQuestionRepositoryContract;
+use Modules\Admin\Contracts\Repositories\QuizRepositoryContract;
 use Modules\Admin\Contracts\Repositories\TajweedRuleRepositoryContract;
 use Modules\Admin\Contracts\Services\ArabicLetterContract;
+use Modules\Admin\Contracts\Services\LessonContract;
 use Modules\Admin\Contracts\Services\MakhrajCategoryContract;
+use Modules\Admin\Contracts\Services\PracticeExerciseContract;
+use Modules\Admin\Contracts\Services\QuizContract;
+use Modules\Admin\Contracts\Services\QuizQuestionContract;
 use Modules\Admin\Contracts\Services\TajweedRuleContract;
 use Modules\Admin\Repositories\ArabicLetterRepository;
+use Modules\Admin\Repositories\LessonRepository;
 use Modules\Admin\Repositories\MakhrajCategoryRepository;
+use Modules\Admin\Repositories\PracticeExerciseRepository;
+use Modules\Admin\Repositories\QuizQuestionRepository;
+use Modules\Admin\Repositories\QuizRepository;
 use Modules\Admin\Repositories\TajweedRuleRepository;
 use Modules\Admin\Services\ArabicLetterService;
+use Modules\Admin\Services\LessonService;
 use Modules\Admin\Services\MakhrajCategoryService;
+use Modules\Admin\Services\PracticeExerciseService;
+use Modules\Admin\Services\QuizQuestionService;
+use Modules\Admin\Services\QuizService;
 use Modules\Admin\Services\TajweedRuleService;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
@@ -59,6 +75,19 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->app->bind(TajweedRuleRepositoryContract::class, TajweedRuleRepository::class);
         $this->app->bind(TajweedRuleContract::class, TajweedRuleService::class);
+        // Add to register method:
+        $this->app->bind(LessonRepositoryContract::class, LessonRepository::class);
+        $this->app->bind(LessonContract::class, LessonService::class);
+
+        // Add to register method:
+        $this->app->bind(PracticeExerciseRepositoryContract::class, PracticeExerciseRepository::class);
+        $this->app->bind(PracticeExerciseContract::class, PracticeExerciseService::class);
+
+        $this->app->bind(QuizRepositoryContract::class, QuizRepository::class);
+        $this->app->bind(QuizContract::class, QuizService::class);
+
+        $this->app->bind(QuizQuestionRepositoryContract::class, QuizQuestionRepository::class);
+        $this->app->bind(QuizQuestionContract::class, QuizQuestionService::class);
     }
 
     /**

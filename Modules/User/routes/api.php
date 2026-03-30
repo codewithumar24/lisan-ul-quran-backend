@@ -26,10 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('me', [AuthController::class, 'me']);
     });
 
-    // User management (admin only)
-    Route::middleware('permission:View Users')->group(function () {
-        Route::apiResource('users', UserController::class);
-    });
+//    // User management (admin only)
+//    Route::middleware('permission:View Users')->group(function () {
+//        Route::apiResource('users', UserController::class);
+//    });
 });
 
-Route::middleware(['auth:sanctum', 'permission:Create Users'])->post('users/admin-create', [UserController::class, 'adminCreate']);
+//Route::middleware(['auth:sanctum', 'permission:Create Users'])->post('users/admin-create', [UserController::class, 'adminCreate']);
